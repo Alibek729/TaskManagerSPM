@@ -17,6 +17,12 @@ public class Task {
 	}
 }
 
+extension Task: Equatable {
+	public static func == (lhs: Task, rhs: Task) -> Bool {
+		lhs === rhs
+	}
+}
+
 public final class RegularTask: Task { }
 
 public final class ImportantTask: Task {
