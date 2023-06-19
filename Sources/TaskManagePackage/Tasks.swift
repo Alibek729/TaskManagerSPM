@@ -38,16 +38,19 @@ public final class ImportantTask: Task {
 	public var deadline: Date {
 		switch taskPriority {
 		case .low:
-			return Calendar.current.date(byAdding: .day, value: 3, to: Date())!
+			return Calendar.current.date(byAdding: .day, value: 3, to: createdDate)!
 		case .medium:
-			return Calendar.current.date(byAdding: .day, value: 2, to: Date())!
+			return Calendar.current.date(byAdding: .day, value: 2, to: createdDate)!
 		case .high:
-			return Calendar.current.date(byAdding: .day, value: 1, to: Date())!
+			return Calendar.current.date(byAdding: .day, value: 1, to: createdDate)!
 		}
 	}
 
-	public init(title: String, taskPriority: TaskPriority) {
+	private var createdDate: Date
+
+	public init(title: String, taskPriority: TaskPriority, completed: Bool = false, createdDate: Date = Date()) {
 		self.taskPriority = taskPriority
+		self.createdDate = createdDate
 		super.init(title: title)
 	}
 }
